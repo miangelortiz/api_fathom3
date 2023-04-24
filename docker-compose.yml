@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  db_fathom3:
+    image: postgres
+    restart: always
+    container_name: db_fathom3
+    environment:
+      - POSTGRES_USER=miangel
+      - POSTGRES_PASSWORD=2029ad
+      - POSTGRES_DB=fathom3db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_fathom3_db:/var/lib/postgresql/data
+    networks: 
+      - network_fathom3
+
+  api_fathom3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api_fathom3
+    restart: always
+    container_name: api_fathom3
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "3000"
+      DATABASE_URL: "postgresql://miangel:2029ad@db_fathom3:5432/fathom3db?schema=public"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db_fathom3
+    networks: 
+      - network_fathom3
+
+volumes:
+  postgres_fathom3_db:
+    driver: local
+
+networks:
+  network_fathom3:
