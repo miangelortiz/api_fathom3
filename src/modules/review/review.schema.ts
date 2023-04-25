@@ -61,4 +61,4 @@ export const {schemas: reviewSchemas, $ref} = buildJsonSchemas({
     reviewsResponseSchema,
     updateReviewSchema,
     updateReviewResponseSchema,
-}, {$id:'Review'});
+}, {$id:"Review"});

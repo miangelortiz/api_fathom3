@@ -1,4 +1,4 @@
-import crypto from 'crypto'
+import crypto from "crypto"
 
 // We use the nodejs crypto module to create a random salt and a cryptographic hash function to transform
 // the password into a new series of characters with a fixed length. 
@@ -9,9 +9,9 @@ import crypto from 'crypto'
  * @returns hash and salt object
  */
 export const hashPassword = (password: string) => {
-    const salt = crypto.randomBytes(16).toString('hex');
+    const salt = crypto.randomBytes(16).toString("hex");
     // We create the hash with the received password and the generated salt.
-    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, 'sha512').toString('hex');
+    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, "sha512").toString("hex");
     
     return { hash, salt};
 }
@@ -24,8 +24,8 @@ export const verifyPassword = ({ candidatePassword, salt, hash } : { candidatePa
         salt, 
         1000,
         64,
-        'sha512'
-    ).toString('hex');
+        "sha512"
+    ).toString("hex");
 
     return candidateHash === hash;
 }

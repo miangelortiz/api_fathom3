@@ -1,11 +1,11 @@
 // Declare globally so that it is in our Fastify instance.
-declare module 'fastify' {
+declare module "fastify" {
     export interface FastifyInstance {
         authenticate: any;
     }
 }
 
-declare module '@fastify/jwt' {
+declare module "@fastify/jwt" {
     export interface FastifyJWT {
         user: {
             id: number;
