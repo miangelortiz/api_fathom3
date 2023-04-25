@@ -14,13 +14,13 @@ const reviewInput = {
     title: z.string(),
     description: z.string().optional(),
     rating: z.number().int().min(1).max(5),
-}
+};
 
 // Properties generated for a review
 const reviewGenerated = {
     id: z.number(),
     createdAt: z.string(),
-}
+};
 
 // Update review params validation
 const updateReviewInput = {
@@ -38,7 +38,7 @@ const createReviewSchema = z.object({
 const reviewResponseSchema = z.object({
     ...reviewInput,
     ...reviewGenerated,
-})
+});
 
 // Update review schema
 const updateReviewSchema = z.object({
@@ -48,7 +48,7 @@ const updateReviewSchema = z.object({
 // Review response schema
 const updateReviewResponseSchema = z.object({
     ...updateReviewInput,
-})
+});
 
 const reviewsResponseSchema = z.array(reviewResponseSchema);
 

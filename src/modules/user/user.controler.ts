@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { FastifyReply, FastifyRequest } from "fastify";
 import { createUser, findUserByEmail } from "./user.service";
 import { CreateUserInput, LoginInput } from "./user.schema";
@@ -21,7 +22,7 @@ export async function registerUser(request: FastifyRequest<{ Body: CreateUserInp
         const user = await createUser(body);
         return reply.code(201).send(user);
     } catch (err) {
-        console.log(err)
+        console.log(err);
         return reply.code(500).send(err);
     }
 }
@@ -47,15 +48,15 @@ export async function loginUser(request: FastifyRequest<{ Body: LoginInput }>, r
                 salt: user.salt,
                 hash: user.password
             }
-        )
+        );
         if (validPassword) {
             const { password, salt, ...rest } = user;
             // generate access token
-            return { accesToken: server.jwt.sign(rest) }
+            return { accesToken: server.jwt.sign(rest) };
         }
         return reply.code(401).send({ message: "Invalid email or password" });
     } catch (err) {
-        console.log(err)
+        console.log(err);
         return reply.code(500).send(err);
     }
 }

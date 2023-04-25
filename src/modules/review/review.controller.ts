@@ -25,7 +25,7 @@ export async function registerReview(
     });
     return review;
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return reply.code(500).send(err);
   }
 }
@@ -47,7 +47,7 @@ export async function getUserReviews(
     }
     return reviews;
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return reply.code(500).send(err);
   }
 }
@@ -76,7 +76,7 @@ export async function deleteUserReview(
       .code(200)
       .send({ message: `Review with id:${review.id} deleted` });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return reply.code(500).send(err);
   }
 }
@@ -103,7 +103,7 @@ export async function updateUserReview(
     const review = await updateReview(request.params.$id, request.body);
     return review;
   } catch (err) {
-    console.log(err)
+    console.log(err);
     return reply.code(500).send(err);
   }
 

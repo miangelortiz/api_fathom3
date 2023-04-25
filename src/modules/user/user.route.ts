@@ -25,7 +25,7 @@ async function userRoutes(server: FastifyInstance) {
                 200: $ref("loginResponseSchema")
             }
         }
-    }, loginUser)
+    }, loginUser);
 }
 
 export default userRoutes;

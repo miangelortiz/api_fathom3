@@ -40,7 +40,7 @@ const loginSchema = z.object({
 // Response login schema
 const loginResponseSchema = z.object({
     accesToken: z.string(),
-})
+});
 
 export type CreateUserInput = z.infer<typeof createUserSchema>
 export type LoginInput = z.infer<typeof loginSchema>
